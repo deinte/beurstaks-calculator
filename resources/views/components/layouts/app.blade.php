@@ -42,6 +42,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 
+    <script defer src="https://analytics.deinte.be/script.js" data-website-id="a2e318f0-5b1c-437e-8560-19bed7657944"></script>
+
     <script type="application/ld+json">
     {
         "@@context": "https://schema.org",

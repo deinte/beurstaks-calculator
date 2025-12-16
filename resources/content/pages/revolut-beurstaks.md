@@ -7,6 +7,8 @@ sources:
     url: "https://financien.belgium.be/nl/ondernemingen/overige-belastingen/diverse-taksen/taks-%20beursverrichtingen"
   - name: "Wikifin (FSMA) - Beleggen via een buitenlandse broker"
     url: "https://www.wikifin.be/nl/belasting-werk-en-inkomen/belastingaangifte/je-roerend-inkomen/de-belastingen-op-je-belgische"
+  - name: "Europese Commissie - Automatische uitwisseling van informatie"
+    url: "https://taxation-customs.ec.europa.eu/taxation/tax-cooperation-and-control/administrative-cooperation-direct-taxation_en"
 faqs:
   - question: "Moet ik TOB betalen als ik via Revolut beleg?"
     answer: "Ja. Als je fiscaal inwoner bent van België, moet je de TOB betalen op elke aan- en verkooptransactie van effecten, ongeacht welke broker je gebruikt. Revolut houdt deze belasting niet in, dus je moet dit zelf regelen."
@@ -15,7 +17,7 @@ faqs:
   - question: "Hoe weet ik welk TOB-tarief van toepassing is op mijn ETF of aandeel?"
     answer: "Dit hangt af van het type effect en waar het is geregistreerd. In de EER geregistreerde ETF's vallen onder 0,12%, individuele aandelen onder 0,35%. Onze calculator en ticker database helpen je het juiste tarief te bepalen."
   - question: "Wat gebeurt er als ik de TOB niet aangeef?"
-    answer: "De Belgische fiscus kan via internationale gegevensuitwisseling (CRS) achterhalen dat je een buitenlandse effectenrekening hebt. Je riskeert nalatigheidsinteresten, belastingverhogingen tot 200%, en bij grote bedragen strafrechtelijke vervolging."
+    answer: "Via de automatische uitwisseling van informatie (CRS) ontvangt de Belgische fiscus jaarlijks gegevens over je buitenlandse rekeningen, inclusief Revolut. Ze weten dus dat je belegt. Bij niet-aangifte riskeer je nalatigheidsinteresten, belastingverhogingen tot 200%, en bij grote bedragen strafrechtelijke vervolging."
   - question: "Moet ik elke transactie apart aangeven?"
     answer: "Nee, je mag transacties bundelen per aangifteperiode. Alle transacties van januari kun je samen aangeven, of zelfs januari en februari bundelen. De deadline is altijd de laatste werkdag van de tweede maand na de vroegste transactie."
   - question: "Hoeveel bedraagt de TOB maximaal per transactie?"
@@ -65,9 +67,19 @@ Dit geldt voor **elke transactie**, ongeacht het bedrag. Ook een aankoop van 50 
 
 ### Wat zijn de risico's als je de TOB niet aangeeft?
 
-Het niet aangeven van de beurstaks is **belastingontduiking**. De Belgische fiscus kan via internationale gegevensuitwisseling (CRS - Common Reporting Standard) zien dat je een buitenlandse effectenrekening hebt.
+Het niet aangeven van de beurstaks is **belastingontduiking**. Denk niet dat je buitenlandse rekening "onder de radar" blijft.
 
-Mogelijke gevolgen:
+#### Automatische uitwisseling van informatie (CRS)
+
+Sinds 2017 wisselen EU-lidstaten automatisch financiële gegevens uit via de **Common Reporting Standard (CRS)**. Dit systeem, opgezet door de Europese Commissie en de OESO, zorgt ervoor dat:
+
+- Buitenlandse banken en brokers (zoals Revolut) jaarlijks rapporteren aan hun lokale belastingdienst
+- Deze informatie automatisch wordt doorgestuurd naar de Belgische FOD Financiën
+- De fiscus een volledig overzicht krijgt van je buitenlandse rekeningen, saldi en inkomsten
+
+Met andere woorden: **de Belgische fiscus weet dat je een Revolut-rekening hebt** en kan nagaan of je de verschuldigde TOB correct hebt aangegeven.
+
+#### Mogelijke gevolgen bij niet-aangifte
 
 - **Nalatigheidsinteresten** op het verschuldigde bedrag
 - **Belastingverhogingen** tot 200% van de verschuldigde taks
@@ -118,7 +130,7 @@ Dit hangt af van het type effect en waar het is geregistreerd. In de EER geregis
 
 ### Wat gebeurt er als ik de TOB niet aangeef?
 
-De Belgische fiscus kan via internationale gegevensuitwisseling (CRS) achterhalen dat je een buitenlandse effectenrekening hebt. Je riskeert nalatigheidsinteresten, belastingverhogingen tot 200%, en bij grote bedragen strafrechtelijke vervolging.
+Via de automatische uitwisseling van informatie (CRS) ontvangt de Belgische fiscus jaarlijks gegevens over je buitenlandse rekeningen, inclusief Revolut. Ze weten dus dat je belegt. Bij niet-aangifte riskeer je nalatigheidsinteresten, belastingverhogingen tot 200%, en bij grote bedragen strafrechtelijke vervolging.
 
 ### Moet ik elke transactie apart aangeven?
 

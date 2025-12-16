@@ -3,28 +3,6 @@
     :description="$page->description ?? Str::limit(strip_tags($page->content), 155)"
     schemaType="Article"
 >
-    @if (!empty($page->faqs))
-    @push('schema')
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            @foreach ($page->faqs as $index => $faq)
-            {
-                "@type": "Question",
-                "name": "{{ addslashes($faq['question']) }}",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "{{ addslashes($faq['answer']) }}"
-                }
-            }@if (!$loop->last),@endif
-            @endforeach
-        ]
-    }
-    </script>
-    @endpush
-    @endif
     {{-- Hero --}}
     <header class="relative pt-32 pb-20 overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-sky-100 via-blue-100 to-indigo-100"></div>

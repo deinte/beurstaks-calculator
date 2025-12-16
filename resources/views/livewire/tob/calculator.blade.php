@@ -447,6 +447,17 @@
                             Nieuwe berekening
                         </button>
                     </div>
+
+                    {{-- Feedback Notice --}}
+                    <div class="mt-8 rounded-2xl bg-amber-50 ring-1 ring-amber-200 p-4 text-center">
+                        <p class="text-sm text-amber-800">
+                            <svg class="inline-block w-4 h-4 mr-1 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                            </svg>
+                            Controleer altijd de berekeningen voordat je aangifte doet.
+                            Fout gevonden? <a href="https://github.com/deinte/beurstaks-calculator/issues" target="_blank" rel="noopener" class="font-medium underline hover:text-amber-900">Meld het op GitHub</a>.
+                        </p>
+                    </div>
                 </div>
             @endif
 

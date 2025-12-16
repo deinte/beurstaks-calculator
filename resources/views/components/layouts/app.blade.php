@@ -37,7 +37,6 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
-    @stack('schema')
 
     <script type="application/ld+json">
     {
@@ -197,6 +196,9 @@
                     <h3 class="font-semibold text-sm uppercase tracking-wider text-gray-400 mb-4">Disclaimer</h3>
                     <p class="text-sm text-gray-400 leading-relaxed">
                         Louter informatief, geen juridisch of fiscaal advies. Raadpleeg bij twijfel de <a href="https://financien.belgium.be/nl/particulieren/belastingaangifte/tarieven-702" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">FOD Financiën</a>.
+                    </p>
+                    <p class="text-sm text-gray-400 leading-relaxed mt-3">
+                        Fout gevonden of suggestie? <a href="https://github.com/deinte/beurstaks-calculator/issues" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">Meld het op GitHub</a> of <a href="https://github.com/deinte/beurstaks-calculator" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">draag bij</a>.
                     </p>
                 </div>
             </div>

@@ -4,7 +4,9 @@ Bereken je Belgische beurstaks (Taks op Beursverrichtingen) voor Revolut transac
 
 > **AI-gegenereerde code**
 >
-> Deze applicatie is grotendeels gegenereerd met behulp van AI (Claude). Hoewel de code is gereviewed en getest, kunnen er fouten in zitten. Gebruik deze tool op eigen risico. Controleer altijd de berekeningen voordat je aangifte doet bij de FOD Financien.
+> Deze applicatie is grotendeels gegenereerd met behulp van AI (Claude). Hoewel de code is gereviewed en getest, kunnen er fouten in zitten. Gebruik deze tool op eigen risico. Controleer altijd de berekeningen voordat je aangifte doet bij de FOD Financiën.
+>
+> **Fout gevonden?** [Open een issue](https://github.com/deinte/beurstaks-calculator/issues) of [draag bij](https://github.com/deinte/beurstaks-calculator).
 
 ## Features
 
@@ -33,8 +35,8 @@ Bereken je Belgische beurstaks (Taks op Beursverrichtingen) voor Revolut transac
 
 ```bash
 # Clone de repository
-git clone <repo-url>
-cd app
+git clone https://github.com/deinte/beurstaks-calculator.git
+cd beurstaks-calculator
 
 # Installeer PHP dependencies
 composer install

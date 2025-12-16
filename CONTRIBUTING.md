@@ -15,8 +15,8 @@ Bedankt voor je interesse in het bijdragen aan TOB Calculator!
 
 ```bash
 # Clone de repository
-git clone <repo-url>
-cd app
+git clone https://github.com/deinte/beurstaks-calculator.git
+cd beurstaks-calculator
 
 # Installeer dependencies
 composer install

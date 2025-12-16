@@ -62,4 +62,16 @@ class PageLoadTest extends TestCase
 
         $response->assertStatus(404);
     }
+
+    public function test_sitemap_loads(): void
+    {
+        $response = $this->get(route('sitemap'));
+
+        $response->assertStatus(200);
+        $response->assertHeader('Content-Type', 'application/xml');
+        $response->assertSee('urlset', false);
+        $response->assertSee(route('home'), false);
+        $response->assertSee(route('calculator'), false);
+        $response->assertSee('rates-and-caps', false);
+    }
 }

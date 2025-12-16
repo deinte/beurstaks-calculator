@@ -2,6 +2,7 @@
 
 use App\Content\Controllers\ShowPageController;
 use App\Http\Controllers\ShowHomepageController;
+use App\Http\Controllers\SitemapController;
 use App\Tob\Livewire\Calculator;
 use App\Tob\Livewire\TickerDatabase;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,9 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 |--------------------------------------------------------------------------
 */
+
+// Sitemap (no rate limiting, cached by search engines)
+Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 
 // Public pages with standard rate limiting (60 requests/minute)
 Route::middleware(['throttle:60,1'])->group(function () {

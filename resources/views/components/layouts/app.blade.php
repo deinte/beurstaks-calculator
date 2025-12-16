@@ -240,7 +240,7 @@
                         <span class="hidden sm:inline">Open Source</span>
                     </a>
                     <span class="text-gray-600">·</span>
-                    <p>Gemaakt door <a href="https://danteschrauwen.be" target="_blank" rel="noopener" class="text-gray-300 hover:text-white font-medium">Dante Schrauwen</a></p>
+                    <p>Gemaakt door <a href="https://danteschrauwen.be?utm_source=beurstaks.be&utm_medium=referral&utm_campaign=footer" target="_blank" rel="noopener" class="text-gray-300 hover:text-white font-medium">Dante Schrauwen</a></p>
                 </div>
             </div>
         </div>

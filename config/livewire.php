@@ -4,6 +4,19 @@ return [
 
     /*
     |---------------------------------------------------------------------------
+    | Asset URL
+    |---------------------------------------------------------------------------
+    |
+    | This URL is used to reference the Livewire JavaScript assets. By default,
+    | Livewire will serve assets through a route, but you can use published
+    | assets for better caching and CDN support.
+    |
+    */
+
+    'asset_url' => env('LIVEWIRE_ASSET_URL'),
+
+    /*
+    |---------------------------------------------------------------------------
     | Class Namespace
     |---------------------------------------------------------------------------
     |

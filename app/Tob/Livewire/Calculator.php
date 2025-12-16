@@ -351,6 +351,18 @@ class Calculator extends Component
         $this->file = null;
     }
 
+    /**
+     * Go back to rate assignment step without resetting rates.
+     */
+    public function goBackToRates(): void
+    {
+        $this->calculated = false;
+        $this->results = [];
+        $this->grandTotal = 0;
+        $this->unmappedTickers = [];
+        $this->processingError = null;
+    }
+
     private function resetState(): void
     {
         $this->fileProcessed = false;

@@ -1,4 +1,7 @@
-<div>
+<div
+    x-data="calculatorHistory()"
+    x-init="init()"
+>
     {{-- Hero --}}
     <header class="relative pt-32 pb-16 overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-sky-100 via-blue-100 to-indigo-100"></div>
@@ -15,27 +18,47 @@
                 <ol class="flex items-center justify-center gap-2 sm:gap-4">
                     @php
                         $steps = [
-                            ['num' => 1, 'label' => 'Upload', 'done' => $fileProcessed, 'current' => !$fileProcessed],
-                            ['num' => 2, 'label' => 'Tarieven', 'done' => $this->allTickersMapped && $fileProcessed, 'current' => $fileProcessed && !$calculated],
-                            ['num' => 3, 'label' => 'Resultaat', 'done' => $calculated, 'current' => $calculated],
+                            ['num' => 1, 'label' => 'Upload', 'done' => $fileProcessed, 'current' => !$fileProcessed, 'clickable' => false],
+                            ['num' => 2, 'label' => 'Tarieven', 'done' => $this->allTickersMapped && $fileProcessed, 'current' => $fileProcessed && !$calculated, 'clickable' => $calculated, 'action' => 'goBackToRates'],
+                            ['num' => 3, 'label' => 'Resultaat', 'done' => $calculated, 'current' => $calculated, 'clickable' => false],
                         ];
                     @endphp
 
                     @foreach ($steps as $i => $step)
                         <li class="flex items-center gap-2">
-                            <span class="flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold transition-all
-                                {{ $step['done'] ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30' : ($step['current'] ? 'bg-white ring-2 ring-blue-600 text-blue-600' : 'bg-white/80 ring-1 ring-black/10 text-gray-400') }}">
-                                @if ($step['done'])
-                                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-                                    </svg>
-                                @else
-                                    {{ $step['num'] }}
-                                @endif
-                            </span>
-                            <span class="hidden sm:block text-sm font-medium {{ $step['done'] || $step['current'] ? 'text-gray-950' : 'text-gray-500' }}">
-                                {{ $step['label'] }}
-                            </span>
+                            @if ($step['clickable'])
+                                <button
+                                    wire:click="{{ $step['action'] }}"
+                                    class="flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold transition-all cursor-pointer hover:ring-4 hover:ring-blue-500/20
+                                        {{ $step['done'] ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30' : ($step['current'] ? 'bg-white ring-2 ring-blue-600 text-blue-600' : 'bg-white/80 ring-1 ring-black/10 text-gray-400') }}"
+                                    title="Terug naar {{ $step['label'] }}"
+                                >
+                                    @if ($step['done'])
+                                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                                        </svg>
+                                    @else
+                                        {{ $step['num'] }}
+                                    @endif
+                                </button>
+                                <button wire:click="{{ $step['action'] }}" class="hidden sm:block text-sm font-medium cursor-pointer hover:text-blue-600 {{ $step['done'] || $step['current'] ? 'text-gray-950' : 'text-gray-500' }}">
+                                    {{ $step['label'] }}
+                                </button>
+                            @else
+                                <span class="flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold transition-all
+                                    {{ $step['done'] ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30' : ($step['current'] ? 'bg-white ring-2 ring-blue-600 text-blue-600' : 'bg-white/80 ring-1 ring-black/10 text-gray-400') }}">
+                                    @if ($step['done'])
+                                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                                        </svg>
+                                    @else
+                                        {{ $step['num'] }}
+                                    @endif
+                                </span>
+                                <span class="hidden sm:block text-sm font-medium {{ $step['done'] || $step['current'] ? 'text-gray-950' : 'text-gray-500' }}">
+                                    {{ $step['label'] }}
+                                </span>
+                            @endif
                         </li>
                         @if ($i < count($steps) - 1)
                             <div class="h-0.5 w-8 sm:w-12 rounded-full {{ $step['done'] ? 'bg-blue-600' : 'bg-black/10' }}"></div>
@@ -111,7 +134,6 @@
 
                         {{-- Upload Zone --}}
                         <div
-                            x-data="{ dragging: false }"
                             @dragover.prevent="dragging = true"
                             @dragleave.prevent="dragging = false"
                             @drop.prevent="dragging = false; $refs.fileInput.files = $event.dataTransfer.files; $refs.fileInput.dispatchEvent(new Event('change'))"
@@ -435,8 +457,17 @@
                         </div>
                     @endforeach
 
-                    {{-- New Calculation --}}
-                    <div class="flex justify-center pt-4">
+                    {{-- Actions --}}
+                    <div class="flex justify-center gap-3 pt-4">
+                        <button
+                            wire:click="goBackToRates"
+                            class="inline-flex items-center gap-2 rounded-full bg-blue-100 px-8 py-3 text-sm font-semibold text-blue-700 hover:bg-blue-200 transition"
+                        >
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                            </svg>
+                            Wijzig tarieven
+                        </button>
                         <button
                             wire:click="resetCalculator"
                             class="inline-flex items-center gap-2 rounded-full bg-gray-100 px-8 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-200 transition"
@@ -464,3 +495,56 @@
         </div>
     </section>
 </div>
+
+@script
+<script>
+Alpine.data('calculatorHistory', () => ({
+    isPopstate: false,
+    lastStep: null,
+    dragging: false,
+
+    getStep() {
+        if ($wire.calculated) return 'results';
+        if ($wire.fileProcessed) return 'rates';
+        return 'upload';
+    },
+
+    init() {
+        // Set initial state
+        this.lastStep = this.getStep();
+        history.replaceState({ step: this.lastStep }, '', window.location.pathname);
+
+        // Listen for browser back/forward
+        window.addEventListener('popstate', (event) => {
+            if (event.state && event.state.step) {
+                this.isPopstate = true;
+                const targetStep = event.state.step;
+                const currentStep = this.getStep();
+
+                if (targetStep === 'rates' && currentStep === 'results') {
+                    $wire.goBackToRates();
+                } else if (targetStep === 'upload' && currentStep !== 'upload') {
+                    $wire.resetCalculator();
+                }
+
+                setTimeout(() => { this.isPopstate = false; }, 100);
+            }
+        });
+
+        // Watch for Livewire state changes
+        $wire.$watch('calculated', () => this.onStepChange());
+        $wire.$watch('fileProcessed', () => this.onStepChange());
+    },
+
+    onStepChange() {
+        if (this.isPopstate) return;
+
+        const step = this.getStep();
+        if (step !== this.lastStep) {
+            this.lastStep = step;
+            history.pushState({ step: step }, '', window.location.pathname);
+        }
+    }
+}));
+</script>
+@endscript

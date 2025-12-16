@@ -21,6 +21,7 @@ class SitemapController
             ['url' => route('home'), 'priority' => '1.0', 'changefreq' => 'weekly'],
             ['url' => route('calculator'), 'priority' => '0.9', 'changefreq' => 'monthly'],
             ['url' => route('tickers'), 'priority' => '0.8', 'changefreq' => 'weekly'],
+            ['url' => route('sources'), 'priority' => '0.6', 'changefreq' => 'monthly'],
         ];
 
         foreach ($staticPages as $page) {

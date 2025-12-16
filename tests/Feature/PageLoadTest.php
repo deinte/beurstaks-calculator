@@ -74,4 +74,13 @@ class PageLoadTest extends TestCase
         $response->assertSee(route('calculator'), false);
         $response->assertSee('rates-and-caps', false);
     }
+
+    public function test_sources_page_loads(): void
+    {
+        $response = $this->get(route('sources'));
+
+        $response->assertStatus(200);
+        $response->assertSee('Bronnen');
+        $response->assertSee('FOD Financiën');
+    }
 }

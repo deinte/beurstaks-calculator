@@ -2,6 +2,7 @@
 
 use App\Content\Controllers\ShowPageController;
 use App\Http\Controllers\ShowHomepageController;
+use App\Http\Controllers\ShowSourcesController;
 use App\Http\Controllers\SitemapController;
 use App\Tob\Livewire\Calculator;
 use App\Tob\Livewire\TickerDatabase;
@@ -23,6 +24,9 @@ Route::middleware(['throttle:60,1'])->group(function () {
 
     // Ticker Database
     Route::get('/tickers', TickerDatabase::class)->name('tickers');
+
+    // Sources page
+    Route::get('/bronnen', ShowSourcesController::class)->name('sources');
 
     // Informational pages (Markdown-driven)
     Route::get('/info/{slug}', ShowPageController::class)

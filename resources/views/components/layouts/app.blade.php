@@ -106,6 +106,7 @@
             ['href' => route('page.show', 'rates-and-caps'), 'label' => 'Tarieven en Plafonds'],
             ['href' => route('page.show', 'how-to-declare'), 'label' => 'Hoe aangeven?'],
             ['href' => route('tickers'), 'label' => 'Ticker Database'],
+            ['href' => route('sources'), 'label' => 'Bronnen'],
             ['href' => route('calculator'), 'label' => 'Calculator'],
         ];
     @endphp

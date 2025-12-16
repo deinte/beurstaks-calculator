@@ -26,11 +26,11 @@ use Livewire\WithFileUploads;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 #[Layout('components.layouts.app', [
-    'title' => 'TOB Calculator - Bereken je Belgische Beurstaks',
+    'title' => 'Beurstaks Calculator - beurstaks.be',
     'description' => 'Bereken gratis je Belgische beurstaks (TOB) voor Revolut transacties. Upload je bestand en krijg automatisch de juiste tarieven.',
     'schemaType' => 'WebApplication',
 ])]
-#[Title('TOB Calculator - Bereken je Belgische Beurstaks')]
+#[Title('Beurstaks Calculator - beurstaks.be')]
 class Calculator extends Component
 {
     use WithFileUploads;

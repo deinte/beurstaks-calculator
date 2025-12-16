@@ -13,7 +13,7 @@ class PageLoadTest extends TestCase
         $response = $this->get(route('home'));
 
         $response->assertStatus(200);
-        $response->assertSee('TOB Calculator');
+        $response->assertSee('beurstaks');
     }
 
     public function test_calculator_page_loads(): void
@@ -21,7 +21,7 @@ class PageLoadTest extends TestCase
         $response = $this->get(route('calculator'));
 
         $response->assertStatus(200);
-        $response->assertSee('TOB Calculator');
+        $response->assertSee('beurstaks');
     }
 
     public function test_ticker_database_page_loads(): void

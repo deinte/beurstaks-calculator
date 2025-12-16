@@ -4,7 +4,7 @@
         <div class="absolute inset-0 bg-gradient-to-br from-sky-100 via-blue-100 to-indigo-100"></div>
         <div class="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
             <h1 class="text-4xl lg:text-5xl font-extrabold text-gray-950 tracking-tight">
-                TOB Calculator
+                Beurstaks Calculator
             </h1>
             <p class="mt-4 text-lg text-gray-600">
                 Bereken je Belgische beurstaks voor buitenlandse brokers

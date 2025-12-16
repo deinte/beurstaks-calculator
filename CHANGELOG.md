@@ -18,7 +18,7 @@ Het formaat is gebaseerd op [Keep a Changelog](https://keepachangelog.com/nl/1.0
 ## [1.0.0] - 2025-12-15
 
 ### Added
-- TOB Calculator met Revolut CSV upload
+- Beurstaks calculator met Revolut CSV upload
 - Automatische ticker herkenning (400+ ETFs en aandelen)
 - Berekening per aangifteperiode met deadlines
 - Drie TOB tarieven: 0,12%, 0,35%, 1,32%

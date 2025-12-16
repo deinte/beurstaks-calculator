@@ -1,6 +1,6 @@
 # Contributing
 
-Bedankt voor je interesse in het bijdragen aan TOB Calculator!
+Bedankt voor je interesse in het bijdragen aan beurstaks.be!
 
 ## Development Setup
 

@@ -159,4 +159,4 @@ Het handmatig berekenen van de beurstaks voor tientallen Revolut-transacties is 
 - Correcte tarieven en plafonds volgens FOD Financiën
 - Overzicht per aangifteperiode
 
-**[Start de TOB Calculator](/ "Bereken nu je Belgische beurstaks voor Revolut")**
+**[Start de Calculator](/ "Bereken nu je Belgische beurstaks voor Revolut")**

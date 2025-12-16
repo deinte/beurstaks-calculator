@@ -1,5 +1,5 @@
 <x-layouts.app
-    :title="$page->title . ' - TOB Calculator'"
+    :title="$page->title . ' - beurstaks.be'"
     :description="$page->description ?? Str::limit(strip_tags($page->content), 155)"
     schemaType="Article"
 >

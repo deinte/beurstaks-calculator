@@ -1,6 +1,6 @@
 <x-layouts.app
-    title="Bronnen & Referenties - TOB Calculator"
-    description="Overzicht van alle officiële bronnen en referenties gebruikt voor de TOB Calculator. Inclusief FOD Financiën, Wikifin, Europese Commissie en wetgeving."
+    title="Bronnen & Referenties - beurstaks.be"
+    description="Overzicht van alle officiële bronnen en referenties gebruikt voor beurstaks.be. Inclusief FOD Financiën, Wikifin, Europese Commissie en wetgeving."
 >
     {{-- Hero --}}
     <header class="relative pt-32 pb-20 overflow-hidden">

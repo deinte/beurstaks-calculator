@@ -1,4 +1,4 @@
-<x-layouts.app title="TOB Calculator - Belgische Beurstaks voor Revolut">
+<x-layouts.app title="beurstaks.be - Belgische Beurstaks Calculator voor Revolut">
     {{-- Hero with gradient --}}
     <section class="relative min-h-screen flex items-center overflow-hidden">
         {{-- Gradient background --}}

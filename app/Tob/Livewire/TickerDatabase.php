@@ -12,11 +12,11 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Layout('components.layouts.app', [
-    'title' => 'Ticker Database - Zoek ETFs en Aandelen | TOB Calculator',
+    'title' => 'Ticker Database - Zoek ETFs en Aandelen | beurstaks.be',
     'description' => 'Doorzoek onze database van 400+ effecten met automatische TOB-tarieven. Vind het juiste tarief voor je ETF of aandeel: 0,12% voor accumulerende ETFs, 0,35% voor aandelen.',
     'schemaType' => 'CollectionPage',
 ])]
-#[Title('Ticker Database - Zoek ETFs en Aandelen | TOB Calculator')]
+#[Title('Ticker Database - Zoek ETFs en Aandelen | beurstaks.be')]
 class TickerDatabase extends Component
 {
     private const MAX_SEARCH_RESULTS = 50;

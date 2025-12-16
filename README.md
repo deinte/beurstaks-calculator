@@ -1,6 +1,6 @@
-# TOB Calculator
+# beurstaks.be
 
-Bereken je Belgische beurstaks (Taks op Beursverrichtingen) voor Revolut transacties.
+Gratis tool om je Belgische beurstaks (TOB) te berekenen voor Revolut transacties.
 
 > **AI-gegenereerde code**
 >
@@ -71,7 +71,7 @@ php artisan test
 
 ```
 app/
-├── Tob/                    # TOB Calculator domein
+├── Tob/                    # Beurstaks calculator domein
 │   ├── Actions/            # Single-purpose acties
 │   ├── Data/               # Data Transfer Objects
 │   ├── Enums/              # TobRate, TransactionType

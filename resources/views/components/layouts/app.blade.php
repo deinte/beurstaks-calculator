@@ -37,12 +37,20 @@
 
     <link rel="dns-prefetch" href="https://fonts.bunny.net">
     <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
-    <link href="https://fonts.bunny.net/css?family=inter:400,600,700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.bunny.net/css?family=inter:400,600,700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:400,600,700&display=swap">
+    </noscript>
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.bunny.net/fonts/inter/files/inter-latin-400-normal.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.bunny.net/fonts/inter/files/inter-latin-600-normal.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.bunny.net/fonts/inter/files/inter-latin-700-normal.woff2" crossorigin>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 
-    <script defer src="https://analytics.deinte.be/script.js" data-website-id="a2e318f0-5b1c-437e-8560-19bed7657944"></script>
+    @if(config('services.umami.enabled', true))
+    <script defer src="{{ config('services.umami.script_url') }}" data-website-id="{{ config('services.umami.website_id') }}"></script>
+    @endif
 
     <script type="application/ld+json">
     {

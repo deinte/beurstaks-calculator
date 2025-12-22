@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    'umami' => [
+        'enabled' => env('UMAMI_ENABLED', true),
+        'script_url' => env('UMAMI_SCRIPT_URL', 'https://analytics.deinte.be/script.js'),
+        'website_id' => env('UMAMI_WEBSITE_ID', 'a2e318f0-5b1c-437e-8560-19bed7657944'),
+    ],
+
 ];

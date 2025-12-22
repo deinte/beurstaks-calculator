@@ -13,6 +13,7 @@ use App\Tob\Data\TobPeriodSummary;
 use App\Tob\Data\TransactionResult;
 use App\Tob\Enums\TobRate;
 use App\Tob\Mappers\RevolutMapper;
+use App\Tob\Services\AnalyticsService;
 use App\Tob\Services\TobCalculatorService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
@@ -183,9 +184,19 @@ class Calculator extends Component
                 $this->tickerRates[$ticker->ticker] = $ticker->suggestedRate;
             }
 
+            // Track analytics
+            app(AnalyticsService::class)->trackFileProcessed(
+                $this,
+                count($this->uniqueTickers),
+                count(array_filter($this->uniqueTickers, fn (TickerInfo $t) => $t->hasSuggestion())),
+            );
+
         } catch (\Throwable $e) {
             $this->processingError = 'Er ging iets mis bij het verwerken van je bestand. '.
                 'Controleer of het een geldig Revolut transactiebestand is.';
+
+            // Track analytics
+            app(AnalyticsService::class)->trackFileUploadError($this, 'processing-failed');
 
             logger()->error('Calculator: File processing failed', [
                 'error' => $e->getMessage(),
@@ -214,6 +225,9 @@ class Calculator extends Component
                 $this->tickerRates[$ticker] = $rateValue;
             }
         }
+
+        // Track analytics
+        app(AnalyticsService::class)->trackBulkRateAssigned($this, 'set-all', $rateValue);
     }
 
     public function applySuggestions(): void
@@ -230,6 +244,9 @@ class Calculator extends Component
         foreach ($this->tickerRates as $ticker => $rate) {
             $this->tickerRates[$ticker] = null;
         }
+
+        // Track analytics
+        app(AnalyticsService::class)->trackBulkRateAssigned($this, 'clear-all');
     }
 
     /*
@@ -266,6 +283,14 @@ class Calculator extends Component
             $this->unmappedTickers = $result['unmapped'];
             $this->grandTotal = array_sum(array_map(fn (PeriodResult $p) => $p->totalTax, $this->results));
             $this->calculated = true;
+
+            // Track analytics
+            app(AnalyticsService::class)->trackCalculationCompleted(
+                $this,
+                $this->grandTotal,
+                count($this->tickerRates),
+                count($this->results),
+            );
 
         } catch (\Throwable $e) {
             $this->processingError = 'Er ging iets mis bij de berekening. Probeer opnieuw.';
@@ -336,6 +361,9 @@ class Calculator extends Component
         $exporter = app(ExportTobResultsAction::class);
         $path = $exporter->execute($result['summaries'], $format);
 
+        // Track analytics
+        app(AnalyticsService::class)->trackExport($this, $format);
+
         return response()->download($path)->deleteFileAfterSend();
     }
 
@@ -347,6 +375,9 @@ class Calculator extends Component
 
     public function resetCalculator(): void
     {
+        // Track analytics before resetting state
+        app(AnalyticsService::class)->trackReset($this);
+
         $this->resetState();
         $this->file = null;
     }
@@ -356,6 +387,9 @@ class Calculator extends Component
      */
     public function goBackToRates(): void
     {
+        // Track analytics
+        app(AnalyticsService::class)->trackGoBackToRates($this);
+
         $this->calculated = false;
         $this->results = [];
         $this->grandTotal = 0;

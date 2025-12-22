@@ -503,6 +503,12 @@ Alpine.data('calculatorHistory', () => ({
     lastStep: null,
     dragging: false,
 
+    trackAnalytics(name, data = {}) {
+        if (typeof window.umami !== 'undefined') {
+            window.umami.track(name, data);
+        }
+    },
+
     getStep() {
         if ($wire.calculated) return 'results';
         if ($wire.fileProcessed) return 'rates';
@@ -513,6 +519,11 @@ Alpine.data('calculatorHistory', () => ({
         // Set initial state
         this.lastStep = this.getStep();
         history.replaceState({ step: this.lastStep }, '', window.location.pathname);
+
+        // Listen for analytics events from Livewire
+        $wire.on('track-analytics', ({ name, data }) => {
+            this.trackAnalytics(name, data);
+        });
 
         // Listen for browser back/forward
         window.addEventListener('popstate', (event) => {

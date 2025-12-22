@@ -9,13 +9,11 @@ use Livewire\Component;
 /**
  * Service for tracking analytics events via Umami.
  *
- * Dispatches browser events that are handled by Alpine.js
- * to call window.umami.track() on the client side.
+ * Uses Livewire's js() method to directly call window.umami.track()
+ * on the client side without needing event listeners.
  */
 class AnalyticsService
 {
-    private const EVENT_NAME = 'track-analytics';
-
     /**
      * Track when a file has been processed.
      */
@@ -88,12 +86,14 @@ class AnalyticsService
     }
 
     /**
-     * Dispatch an analytics event to the browser.
+     * Execute Umami tracking directly via JavaScript.
      *
      * @param  array<string, mixed>  $data
      */
     private function track(Component $component, string $eventName, array $data = []): void
     {
-        $component->dispatch(self::EVENT_NAME, name: $eventName, data: $data);
+        $jsonData = json_encode($data, JSON_THROW_ON_ERROR);
+
+        $component->js("window.umami?.track('$eventName', $jsonData)");
     }
 }

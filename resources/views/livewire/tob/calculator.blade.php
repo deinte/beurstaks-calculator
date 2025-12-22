@@ -498,16 +498,6 @@
 
 @script
 <script>
-// Global analytics listener (outside Alpine to ensure all events are caught)
-if (!window._analyticsListenerAdded) {
-    Livewire.on('track-analytics', (event) => {
-        if (typeof window.umami !== 'undefined') {
-            window.umami.track(event.name, event.data || {});
-        }
-    });
-    window._analyticsListenerAdded = true;
-}
-
 Alpine.data('calculatorHistory', () => ({
     isPopstate: false,
     lastStep: null,

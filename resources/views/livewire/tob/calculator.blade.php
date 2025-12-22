@@ -498,16 +498,20 @@
 
 @script
 <script>
+// Global analytics listener (outside Alpine to ensure all events are caught)
+if (!window._analyticsListenerAdded) {
+    Livewire.on('track-analytics', (event) => {
+        if (typeof window.umami !== 'undefined') {
+            window.umami.track(event.name, event.data || {});
+        }
+    });
+    window._analyticsListenerAdded = true;
+}
+
 Alpine.data('calculatorHistory', () => ({
     isPopstate: false,
     lastStep: null,
     dragging: false,
-
-    trackAnalytics(name, data = {}) {
-        if (typeof window.umami !== 'undefined') {
-            window.umami.track(name, data);
-        }
-    },
 
     getStep() {
         if ($wire.calculated) return 'results';
@@ -519,14 +523,6 @@ Alpine.data('calculatorHistory', () => ({
         // Set initial state
         this.lastStep = this.getStep();
         history.replaceState({ step: this.lastStep }, '', window.location.pathname);
-
-        // Listen for analytics events from Livewire (only once)
-        if (!window._analyticsListenerAdded) {
-            $wire.on('track-analytics', ({ name, data }) => {
-                this.trackAnalytics(name, data);
-            });
-            window._analyticsListenerAdded = true;
-        }
 
         // Listen for browser back/forward
         window.addEventListener('popstate', (event) => {

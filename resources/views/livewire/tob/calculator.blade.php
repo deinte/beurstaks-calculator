@@ -317,6 +317,7 @@
                                             <div class="flex items-center gap-2">
                                                 <select
                                                     wire:model.change="tickerRates.{{ $ticker->ticker }}"
+                                                    x-on:change="window.umami?.track('rate-changed', { ticker: '{{ $ticker->ticker }}', rate: $event.target.value || 'none' })"
                                                     class="block w-full rounded-xl border-0 py-2 pl-4 pr-10 text-sm font-medium text-gray-900 ring-1 ring-inset transition focus:ring-2 focus:ring-blue-600
                                                         {{ $tickerRates[$ticker->ticker] === null ? 'ring-red-300 bg-red-50' : 'ring-gray-200 bg-white' }}
                                                         {{ $tickerRates[$ticker->ticker] === 'low' ? 'ring-emerald-300 bg-emerald-50' : '' }}

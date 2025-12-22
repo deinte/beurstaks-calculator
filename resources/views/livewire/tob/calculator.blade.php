@@ -520,10 +520,13 @@ Alpine.data('calculatorHistory', () => ({
         this.lastStep = this.getStep();
         history.replaceState({ step: this.lastStep }, '', window.location.pathname);
 
-        // Listen for analytics events from Livewire
-        $wire.on('track-analytics', ({ name, data }) => {
-            this.trackAnalytics(name, data);
-        });
+        // Listen for analytics events from Livewire (only once)
+        if (!window._analyticsListenerAdded) {
+            $wire.on('track-analytics', ({ name, data }) => {
+                this.trackAnalytics(name, data);
+            });
+            window._analyticsListenerAdded = true;
+        }
 
         // Listen for browser back/forward
         window.addEventListener('popstate', (event) => {
